@@ -64,3 +64,9 @@ curl --request PUT \
 curl --request DELETE \
   --url http://localhost:3001/api/clientes/1
 ```
+
+## Resolvendo problemas
+Se a aplicação em client, após executar yarn start, exibir uma mensagem de erro acusando Permissão Negada para react-scripts, a solução é executar esse comando: 
+```bash
+sudo chmod +x node_modules/.bin/react-scripts
+``` 
