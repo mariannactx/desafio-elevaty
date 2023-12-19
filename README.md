@@ -11,21 +11,23 @@ docker run -d --name postgresdb-container -p 5432:5432 postgres-db
 - API: na pasta `api`, executar no terminal `yarn && yarn start`
 - Interface: na pasta `client`, executar no terminal `yarn && yarn start`
 
-## API
+## Uso da API
 
-- Ver lista de clientes
+- Formato de data: yyyy-mm-dd
+
+### 1. Ver lista de clientes
 ```bash
 curl --request GET \
   --url http://localhost:3001/api/clientes
 ```
 
-- Ver cliente (http://localhost:3001/api/clientes/:id)
+### 2. Ver cliente (http://localhost:3001/api/clientes/:id)
 ```bash
 curl --request GET \
   --url http://localhost:3001/api/clientes/2
 ```
 
-- Criar cliente
+### 3. Criar cliente
 
 ```bash
   curl --request POST \
@@ -42,12 +44,11 @@ curl --request GET \
 }'
 ```
 
-- Editar cliente (http://localhost:3001/api/clientes/:id)
+### 4. Editar cliente (http://localhost:3001/api/clientes/:id)
 ```bash
 curl --request PUT \
   --url http://localhost:3001/api/clientes/1 \
   --header 'Content-Type: application/json' \
-  --header 'User-Agent: insomnia/8.4.5' \
   --data '{
   "nome": "Maria Silva",
   "email": "mariasilva@gmail.com" ,
@@ -58,10 +59,8 @@ curl --request PUT \
   "fatura": "https://drive.google.com/file/d/1rmhZT5HxOfdrHOZsOSBqfkwDCwNozcIA/view?usp=drive_link"
 }'
 ```
-- Excluir cliente (http://localhost:3001/api/clientes/:id)
+### 5. Excluir cliente (http://localhost:3001/api/clientes/:id)
 ```bash
 curl --request DELETE \
   --url http://localhost:3001/api/clientes/1
 ```
-
-- Importante! O formato de data é: yyyy-mm-dd
