@@ -1,7 +1,7 @@
 import query from './connection.js';
 
 export async function listAll() {
-  const result = await query('SELECT * FROM clientes');
+  const result = await query('SELECT * FROM clientes ORDER BY id');
 
   return result ? result.rows : [];
 }
@@ -33,34 +33,14 @@ export async function create(body) {
 export async function update(id, values) {
   const sqlParts = ['UPDATE clientes SET'];
 
-  if (values.nome) {
-    sqlParts.push(`nome='${values.nome}',`);
-  }
-
-  if (values.email) {
-    sqlParts.push(`email='${values.email}',`);
-  }
-
-  if (values.data_de_nascimento) {
-    sqlParts.push(`data_de_nascimento='${values.data_de_nascimento}',`);
-  }
-
-  if (values.telefone) {
-    sqlParts.push(`telefone='${values.telefone}',`);
-  }
-
-  if (values.endereco) {
-    sqlParts.push(`endereco='${values.endereco}',`);
-  }
-
-  if (values.cartoes_de_credito) {
-    sqlParts.push(`cartoes_de_credito='${values.cartoes_de_credito}',`);
-  }
-
-  if (values.fatura) {
-    sqlParts.push(`fatura='${values.fatura}'`);
-  }
-
+  sqlParts.push(`nome='${values.nome}',`);
+  sqlParts.push(`email='${values.email}',`);
+  sqlParts.push(`data_de_nascimento='${values.data_de_nascimento}',`);
+  sqlParts.push(`telefone='${values.telefone}',`);
+  sqlParts.push(`endereco='${values.endereco}',`);
+  sqlParts.push(`cartoes_de_credito='${values.cartoes_de_credito}',`);
+  sqlParts.push(`fatura='${values.fatura}'`);
+  
   sqlParts.push(`WHERE id = ${id}`);
 
   const sql = sqlParts.join(' ');
