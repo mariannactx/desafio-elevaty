@@ -49,12 +49,15 @@ function ListClientPage() {
             <th>Nome</th>
             <th>Email</th>
             <th>Fatura</th>
-            <th></th>
-            <th></th>
-            <th></th>
+            <th>Ações</th>
           </tr>
         </thead>
         <tbody>
+          {clients.length === 0 && (
+            <tr>
+            <td colSpan={5}>Nenhum cliente cadastrado</td>
+            </tr>
+          )}
           {clients.length > 0 && clients.map((client, index) => {
             const key = `client-${client.id}`;
             const visualizar = `/ver/${client.id}`;
@@ -70,13 +73,9 @@ function ListClientPage() {
                     Ver Fatura
                   </Button>
                 </td>
-                <td>
+                <td className='acoes'>
                   <Button href={visualizar}>Visualizar</Button>
-                </td>
-                <td>
                   <Button href={editar}>Editar</Button>
-                </td>
-                <td>
                   <Button onClick={() => {
                     excluir(index);
                   }}>

@@ -9,3 +9,7 @@ table {
 #novo-cliente {
   margin-top: 40px
 }
+
+.acoes button, .acoes a {
+  margin: 0 10px
+}

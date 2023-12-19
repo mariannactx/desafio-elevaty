@@ -23,15 +23,15 @@ function EditClientPage() {
     async function fetchData() {
       const response = await fetch('http://localhost:3001/api/clientes/' + id);
       const data = await response.json();
+      data[0].data_de_nascimento = moment(data[0].data_de_nascimento).format(
+        'yyyy-MM-DD'
+      );
       setClient(data[0]);
+ 
     }
 
     fetchData();
   }, [id]);
-
-  const dataDeNascimento = moment(client.data_de_nascimento).format(
-    'yyyy-MM-DD'
-  );
 
   function onChange(e) {
     const inputName = e.target.name;
@@ -81,7 +81,7 @@ function EditClientPage() {
           onChange={onChange}
           name='data_de_nascimento'
           label='Data de nascimento'
-          value={dataDeNascimento}
+          value={client.data_de_nascimento}
         />
         <FormTextInput
           onChange={onChange}
